@@ -1,0 +1,209 @@
+%!TEX root=./notes_template.tex
+
+\noindent
+{\large \bf Permutation Basics}
+
+
+Comprehensive resources from an algebraic combinatorics perspective abound.  Notable examples include:
+
+\medskip
+\noindent
+Macdonald's Notes on Schubert polynomials
+
+\noindent
+Garsia's ``The Saga of Reduced Factorizations of Elements of the Symmetric Group".
+
+
+
+
+\begin{definition}
+For $n\geq 1$, a {\it permutation} of $n$ is a 
+is a bijection from  $[n]$ to $[n]$, where $[n]=\{1,2,\ldots,n\}$.
+\end{definition}
+
+\begin{example} 
+A permutation of $n=3$ is defined by $\sigma(1)=2,\sigma(2)=1,\sigma(3)=3$.
+\end{example}
+
+We set some conventions to make it more convenient to express a permutation.
+First, for $\sigma\in S_n$ where $\sigma(i)=j$, we instead write $\sigma_i=j$.
+Two different notations to represent the action of $\sigma$ are as follows:
+
+\bigskip
+\noindent
+{\it Two line notation:}
+$\sigma=\left(\begin{matrix}
+1&2&3&\cdots&n\\
+\sigma_1&\sigma_2&\sigma_3&\cdots&\sigma_n
+\end{matrix}
+\right)$
+
+\bigskip
+
+\noindent
+{\it One line notation:} $\sigma=(\sigma_1\,\sigma_2\,\ldots\,\sigma_n)$
+
+\bigskip
+
+\begin{example}
+The permutation 
+$\sigma=\left(\begin{matrix}
+1&2&3&4&5\\
+4&2&1&5&3
+\end{matrix}
+\right)
+= ( 4\,2\,1\,5\,3)
+$
+is the permutation of 5 letters where $1\mapsto 4, 2\mapsto 2, 3\mapsto 1$ and so forth.
+\end{example}
+
+For enumerative purposes, we often think of a permutation simply as an $n$-tuple with 
+distinct entries between 1 and $n$.  However, keep in mind that these are functions
+and can thus be composed.
+$$
+\tau=
+\begin{pmatrix}
+1&2&3\\
+3&1&2
+\end{pmatrix}
+\;\;\text{and} \;\;
+\sigma=
+\begin{pmatrix}
+1&2&3\\
+2&1&3
+\end{pmatrix}
+\implies \tau\sigma=
+\begin{pmatrix}
+1&2&3\\
+1&3&2
+\end{pmatrix}
+\,.
+$$
+Recall that the composition of bijections is itself a bijection.  It is thus not surprising 
+that the  set of all permutations forms a group.
+
+\begin{definition}
+For $n\geq 1$, the {\it symmetric group} $S_n$ is the set of permutations of $n$
+under the composition of maps.  
+\end{definition}
+\begin{example}
+The symmetric group on 3 elements, in one-line notation, is
+$S_3= \left\{ (1\,2\,3),(1\,3\,2),(3\,1\,2),(2\,1\,3),(2\,3\,1),(3\,2\,1)\right\}$.
+\end{example}
+One line notation makes it clear that the group has order $n!$.
+Note that $S_n$, for $n>2$, is not an abelian group since
+the elements do not necessarily commute.
+$$
+\sigma\tau=
+\begin{pmatrix}
+1&2&3\\
+3&2&1
+\end{pmatrix}
+$$
+The {\it inverse} of $\sigma\in S_n$
+is the element $\sigma^{-1}$ where
+$\sigma^{-1}\sigma = id$.  Since the inverse of
+a permutation $\sigma$ is the permutation that
+undoes the action of $\sigma$, it can easily be 
+computed from $\sigma$ by swapping the top and 
+bottom row in the 2-line notation for $\sigma$.
+$$
+\sigma=\left(\begin{matrix}
+1&2&3&\cdots&n\\
+\sigma_1&\sigma_2&\sigma_3&\cdots&\sigma_n
+\end{matrix}
+\right)
+\quad\implies\quad
+\sigma^{-1}=
+\left(\begin{matrix}
+\sigma_1&\sigma_2&\sigma_3&\cdots&\sigma_n\\
+1&2&3&\cdots&n
+\end{matrix}
+\right)
+$$
+Note that simply swapping the two rows does not yield the inverse in conventional 2-line notation but
+that is easily remedied by ordering the resulting columns so that its top row is increasing.
+\begin{example}
+$$
+\sigma = (3\,2\,5\,1\,4)\quad\implies\quad
+\sigma^{-1}=
+\left(\begin{matrix}
+3&2&5&1&4\\
+1&2&3&4&5
+\end{matrix}
+\right)
+=
+\left(\begin{matrix}
+1&2&3&4&5\\
+4&2&1&5&3
+\end{matrix}
+\right)
+$$
+\end{example}
+
+\begin{definition}
+A permutation that is equal to its inverse is called
+an {\it involution}.  Note 
+$\sigma=\sigma^{-1}\iff \sigma\sigma=id$.
+\end{definition}
+\begin{example}
+The involutions of $S_3$ are
+$\{
+(1\,2\,3), (2\,1\,3), (3\,2\,1), (1\,3\,2)\}$.
+\end{example}
+
+We like to count the number of elements in a set.  Sometimes this can be done with an explicit formula
+such as we did for the order of $S_n$.  However, it may be that a closed formula is hard to
+come by; we then often appeal to bijections and/or recursions.  
+
+
+\bigskip
+
+\section*{\bf Homework 1}
+
+\begin{enumerate}
+\item Make sure you are comfortable with our conventions by computing $\sigma^2$ and
+finding $\sigma^{-1}$ for
+$$
+\sigma = (6\,7\,3\,2\,5\,1\,4)\in S_7\,.
+$$
+Is $\sigma$ an involution?
+
+\bigskip
+
+\item Prove that the composition of bijections from $A\to A$ is a bijection.
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+% $$
+% {\tiny\tableau[scY]{ \fl,\fl,| \fl,,| ,,| }}
+% \qquad
+% {\tiny\tableau[scY]{\fl ,,| \fl,,| ,,| }}
+% \qquad
+% {\tiny\tableau[scY]{ \fl,\fl,| ,,| ,,| }}
+% \qquad
+% {\tiny\tableau[scY]{\fl,,| ,,| ,,| }}
+% \qquad
+% {\tiny\tableau[scY]{ ,,|,,| ,,| }}
+% $$
+% $$
+% {\tiny\tableau[scY]{\bl, 8, 9, 5, 4, 6, 7 ,2, 3, 10, 1|
+% \bl 1,,,,,,,,,,\times|
+% \bl 2,,,,,,,\times,\circ,\circ,\circ|
+% \bl 3,,,,,,,\circ,\times,\circ,\circ|
+% \bl 4,,,,\times,\circ,\circ,\circ,\circ,\circ,\circ|
+% \bl 5,,,\times,\circ,\circ,\circ,\circ,\circ,\circ,\circ|
+% \bl 6,,,\circ,\circ,\times,\circ,\circ,\circ,\circ,\circ|
+% \bl 7,,,\circ,\circ,\circ,\times,\circ,\circ,\circ,\circ|
+% \bl 8,\times,\circ,\circ,\circ,\circ,\circ,\circ,\circ,\circ,\circ|
+% \bl 9,\circ,\times,\circ,\circ,\circ,\circ,\circ,\circ,\circ,\circ|
+% \bl 10,\circ,\circ,\circ,\circ,\circ,\circ,\circ,\circ,\times,\circ|
+% }}
+% $$
